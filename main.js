@@ -9,14 +9,17 @@ var $set = document.querySelector('#set')
 var timer = {
   seconds: 0,
   id: null,
-  limit: $limit.value
+  limit: null
 }
 
 function start() {
-  if(timer.id === null){
+  if (timer.id === null) {
     timer.id = setInterval(function () {
+      if (timer.limit === null) {
       timer.seconds++
-      render()
+    } else if (timer.seconds < timer.limit) {
+      timer.seconds++
+    }
     }, 1000)
   }
 }
@@ -27,7 +30,9 @@ function stop() {
 }
 
 function render() {
-  $time.textContent = timer.seconds
+  setInterval(function() {
+    $time.textContent = timer.seconds
+  }, 1000)
 }
 
 function reset() {
@@ -37,13 +42,11 @@ function reset() {
 
 function limit() {
   timer.limit = $limit.value
-  timer.id = null
 }
 
 $start.addEventListener('click', start)
-
 $stop.addEventListener('click', stop)
-
 $reset.addEventListener('click', reset)
-
 $set.addEventListener('click', limit)
+
+render()
