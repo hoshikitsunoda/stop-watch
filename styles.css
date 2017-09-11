@@ -1,0 +1,14 @@
+#time {
+  width: 91px;
+  background-color: pink;
+  box-sizing: border-box;
+  border: 1px solid black;
+  text-align: center;
+}
+
+button {
+  background-color: tomato;
+  border: none;
+  margin-left: 2px;
+  margin-top: 5px;
+}
