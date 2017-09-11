@@ -33,13 +33,11 @@ function render() {
 function reset() {
   timer.seconds = 0
   $time.textContent = timer.seconds
-  timer.id = null
 }
 
-function limit(event) {
-  if(timer.seconds === $limit.value){
-    clearInterval(timer.id)
-  }
+function limit() {
+  timer.limit = $limit.value
+  timer.id = null
 }
 
 $start.addEventListener('click', start)
