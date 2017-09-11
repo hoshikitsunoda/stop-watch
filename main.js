@@ -23,10 +23,23 @@ function start() {
 
 function stop() {
   clearInterval(timer.id)
+  timer.id = null
 }
 
 function render() {
   $time.textContent = timer.seconds
+}
+
+function reset() {
+  timer.seconds = 0
+  $time.textContent = timer.seconds
+  timer.id = null
+}
+
+function limit(event) {
+  if(timer.seconds === $limit.value){
+    clearInterval(timer.id)
+  }
 }
 
 $start.addEventListener('click', start)
@@ -34,3 +47,5 @@ $start.addEventListener('click', start)
 $stop.addEventListener('click', stop)
 
 $reset.addEventListener('click', reset)
+
+$set.addEventListener('click', limit)
